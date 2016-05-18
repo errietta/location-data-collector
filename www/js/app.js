@@ -50,7 +50,7 @@ function onDeviceReady() {
         div.style.display = 'block';
     });
 
-    document.getElementById('email').addEventListener('click', function() {
+    document.getElementById('sendEmail').addEventListener('click', function() {
         var records = localStorage.getItem('records');
 
         if (!records) {
@@ -61,10 +61,10 @@ function onDeviceReady() {
         cordova.plugins.email.open({
             subject: 'Exported records',
             body:    records
-        });
+        }, function() { });
     });
 
-    document.getItem('clearRecords').addEventListener('click', function() {
+    document.getElementById('clearRecords').addEventListener('click', function() {
         if (confirm("Are you sure? This cannot be undone!")) {
             localStorage.setItem('records', '');
             window.location.reload();
