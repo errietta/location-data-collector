@@ -1,0 +1,7 @@
+.*.sw?
+.sw?
+www/js/components
+platforms
+plugins
+hooks
+node_modules
