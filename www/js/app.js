@@ -58,10 +58,21 @@ function onDeviceReady() {
             return;
         }
 
-        cordova.plugins.email.open({
-            subject: 'Exported records',
-            body:    records
-        }, function() { });
+        var options = {
+            message: records,
+            subject: 'Location data',
+            chooserTitle: 'Pick an app'
+        };
+
+        var onSuccess = function(result) {
+            console.log("Share completed? " + result.completed);
+        };
+
+        var onError = function(msg) {
+            console.log("Sharing failed with message: " + msg);
+        };
+
+        window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
     });
 
     document.getElementById('clearRecords').addEventListener('click', function() {
